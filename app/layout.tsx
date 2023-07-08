@@ -1,5 +1,10 @@
-import './globals.css';
 import localFont from 'next/font/local';
+
+import './globals.css';
+
+import ModalProvider from '@/providers/modal-provider';
+
+import { DirectionProvider } from '@radix-ui/react-direction';
 const shabnam = localFont({
   src: '../public/font/Shabnam.woff2',
 });
@@ -14,8 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fa-IR" dir="rtl">
-      <body className={shabnam.className}>{children}</body>
+    <html dir="rtl">
+      <body className={shabnam.className}>
+        <ModalProvider />
+        {children}
+      </body>
     </html>
   );
 }
