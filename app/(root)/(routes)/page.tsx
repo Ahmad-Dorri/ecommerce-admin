@@ -2,7 +2,7 @@
 
 import { useStoreModal } from '@/hooks/use-store-modal';
 import { useEffect } from 'react';
-
+//
 export default function RootPage() {
   const { isOpen, onOpen } = useStoreModal();
   useEffect(() => {
@@ -10,5 +10,5 @@ export default function RootPage() {
       onOpen();
     }
   }, [isOpen, onOpen]);
-  return <div>صفحه اصلی</div>;
+  return null;
 }

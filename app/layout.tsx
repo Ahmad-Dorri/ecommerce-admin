@@ -3,8 +3,8 @@ import localFont from 'next/font/local';
 import './globals.css';
 
 import ModalProvider from '@/providers/modal-provider';
+import { ToastProvider } from '@/components/modals/toast-provider';
 
-import { DirectionProvider } from '@radix-ui/react-direction';
 const shabnam = localFont({
   src: '../public/font/Shabnam.woff2',
 });
@@ -21,6 +21,7 @@ export default function RootLayout({
   return (
     <html dir="rtl">
       <body className={shabnam.className}>
+        <ToastProvider />
         <ModalProvider />
         {children}
       </body>
