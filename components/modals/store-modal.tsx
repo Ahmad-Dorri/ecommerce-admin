@@ -37,13 +37,9 @@ export default function StoreModal() {
     },
   });
   const onSubmit = async (values: FormType) => {
-    // console.log(values);
-    //TODO: Create Store
     try {
       setLoading(true);
-      // throw new Error('x');
       const response = await axios.post('/api/stores', values);
-      // console.log(response.data);
       window.location.assign(`/${response.data.id}`);
     } catch (error) {
       toast.error('خطا در ایجاد فروشگاه');

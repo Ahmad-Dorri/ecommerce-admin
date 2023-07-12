@@ -1,13 +1,11 @@
 'use client';
-import React from 'react';
-import dynamic from 'next/dynamic';
 
 import {
   Dialog,
   DialogContent,
-  DialogTitle,
-  DialogHeader,
   DialogDescription,
+  DialogHeader,
+  DialogTitle,
 } from '@/components/ui/dialog';
 
 interface ModalProps {
@@ -17,6 +15,7 @@ interface ModalProps {
   onClose: () => void;
   children?: React.ReactNode;
 }
+
 const Modal: React.FC<ModalProps> = ({
   title,
   description,
@@ -25,10 +24,11 @@ const Modal: React.FC<ModalProps> = ({
   children,
 }) => {
   const onChange = (open: boolean) => {
-    if (open) {
+    if (!open) {
       onClose();
     }
   };
+
   return (
     <Dialog open={isOpen} onOpenChange={onChange}>
       <DialogContent>
@@ -41,4 +41,4 @@ const Modal: React.FC<ModalProps> = ({
     </Dialog>
   );
 };
-export default dynamic(() => Promise.resolve(Modal), { ssr: false });
+export default Modal;

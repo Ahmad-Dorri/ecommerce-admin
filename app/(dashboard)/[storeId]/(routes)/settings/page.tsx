@@ -1,16 +1,16 @@
+import React from 'react';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
 import prismadb from '@/lib/prismadb';
-import Navbar from '@/components/navbar';
 
-export default async function DashboardLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { storeId: string };
-}) {
+interface SettingsPageProps {
+  params: {
+    storeId: string;
+  };
+}
+
+export default async function SettingsPage({ params }: SettingsPageProps) {
   const session = await getServerSession();
   const userId = session?.user?.name;
   if (!userId) {
@@ -18,15 +18,17 @@ export default async function DashboardLayout({
   }
   const store = await prismadb.store.findFirst({
     where: {
-      id: params.storeId,
       userId,
+      id: params.storeId,
     },
   });
-  if (!store) redirect('/');
+  if (!store) {
+    redirect('/');
+  }
+
   return (
-    <>
-      <Navbar />
-      {children}
-    </>
+    <div className="flex-col">
+      <div className="flex-1 space-y-4 p-8 pt-6 ">setting page</div>
+    </div>
   );
 }

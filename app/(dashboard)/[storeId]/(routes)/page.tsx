@@ -10,8 +10,8 @@ const DashboardPage: React.FC<DashboardProps> = async ({ params }) => {
   });
   return (
     <div>
-      <h1>Dashboard</h1>
-      <p>{JSON.stringify(store)}</p>
+      <h1>داشبورد</h1>
+      <p>فروشگاه: {store?.name}</p>
     </div>
   );
 };
