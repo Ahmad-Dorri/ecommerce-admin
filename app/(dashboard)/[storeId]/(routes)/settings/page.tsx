@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
 import prismadb from '@/lib/prismadb';
+import SettingsForm from './components/settings-form';
 
 interface SettingsPageProps {
   params: {
@@ -28,7 +29,9 @@ export default async function SettingsPage({ params }: SettingsPageProps) {
 
   return (
     <div className="flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6 ">setting page</div>
+      <div className="flex-1 space-y-4 p-8 pt-6 ">
+        <SettingsForm userId={userId} initialData={store} />
+      </div>
     </div>
   );
 }

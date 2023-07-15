@@ -5,9 +5,9 @@ import { getServerSession } from 'next-auth/next';
 import prismadb from "@/lib/prismadb";
 
 
-export async function POST(req: any) {
+export async function POST(req: Request) {
     try {
-        const session = await getServerSession({ req });
+        const session = await getServerSession();
         const userId = session?.user?.name
 
         // console.log(userId)

@@ -1,4 +1,6 @@
 import prismadb from '@/lib/prismadb';
+import { NextPage } from 'next';
+import { JSXElementConstructor } from 'react';
 
 interface DashboardProps {
   params: { storeId: string };

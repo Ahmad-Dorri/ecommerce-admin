@@ -5,6 +5,12 @@ import { useParams, usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
+interface Routes {
+  href: string;
+  label: string;
+  active: boolean;
+}
+
 export default function MainNav({
   className,
   ...props
@@ -12,7 +18,12 @@ export default function MainNav({
   const params = useParams();
   const pathName = usePathname();
   // TODO: add other routes
-  const routes = [
+  const routes: Routes[] = [
+    {
+      href: `/${params.storeId}`,
+      label: 'داشبورد',
+      active: pathName === `/${params.storeId}`,
+    },
     {
       href: `/${params.storeId}/settings`,
       label: 'تنظیمات',
@@ -20,7 +31,7 @@ export default function MainNav({
     },
   ];
   return (
-    <nav className={cn('flex items-center space-x-4 lg:space-x-6', className)}>
+    <nav className={cn('flex items-center gap-2 lg:space-x-6', className)}>
       {routes.map((route) => (
         <Link
           key={route.href}
