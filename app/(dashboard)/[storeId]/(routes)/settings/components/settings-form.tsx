@@ -34,7 +34,7 @@ const formSchema = z.object({
   name: z.string().min(1, { message: 'حداقل یک کلمه وارد کنید.' }),
 });
 
-type settingFormValues = z.infer<typeof formSchema>;
+type settingsFormValues = z.infer<typeof formSchema>;
 
 export default function SettingsForm({
   initialData,
@@ -46,7 +46,7 @@ export default function SettingsForm({
   const router = useRouter();
   const origin = UseOrigin();
 
-  const form = useForm<settingFormValues>({
+  const form = useForm<settingsFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData,
   });
@@ -55,7 +55,7 @@ export default function SettingsForm({
     redirect('/login');
   }
 
-  const onSubmit = async (data: settingFormValues) => {
+  const onSubmit = async (data: settingsFormValues) => {
     try {
       setLoading(true);
 

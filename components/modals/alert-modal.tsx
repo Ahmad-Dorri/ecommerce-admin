@@ -34,7 +34,7 @@ export default function AlertModal({
           لغو
         </Button>
         <Button disabled={loading} variant="destructive" onClick={onConfirm}>
-          حذف فروشگاه
+          حذف
         </Button>
       </div>
     </Modal>

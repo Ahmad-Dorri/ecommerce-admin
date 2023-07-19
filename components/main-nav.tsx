@@ -29,9 +29,14 @@ export default function MainNav({
       label: 'تنظیمات',
       active: pathName === `/${params.storeId}/settings`,
     },
+    {
+      href: `/${params.storeId}/billboards`,
+      label: 'بیلبورد',
+      active: pathName === `/${params.storeId}/billboards`,
+    },
   ];
   return (
-    <nav className={cn('flex items-center gap-2 lg:space-x-6', className)}>
+    <nav className={cn('flex items-center gap-2 lg:gap-6 ', className)}>
       {routes.map((route) => (
         <Link
           key={route.href}
