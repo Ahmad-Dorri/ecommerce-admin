@@ -13,8 +13,8 @@ interface ApiAlertProps {
 }
 
 const textMap: Record<ApiAlertProps['varient'], string> = {
-  public: 'عمومی',
-  admin: 'ادمین',
+  public: 'Public',
+  admin: 'Admin',
 };
 
 const varientMap: Record<ApiAlertProps['varient'], BadgeProps['variant']> = {
@@ -34,10 +34,10 @@ const ApiAlert: React.FC<ApiAlertProps> = ({
 
   return (
     <Alert>
-      <AlertTitle className="flex gap-2 items-center justify-start">
-        <ServerIcon className="h-4 w-4" />
-        {title}
+      <AlertTitle className="p-2 flex gap-2 items-center justify-end">
         <Badge variant={varientMap[varient]}>{textMap[varient]}</Badge>
+        {title}
+        <ServerIcon className="h-4 w-4" />
       </AlertTitle>
       <AlertDescription className="mr-4 mt-4 flex flex-row-reverse items-center justify-between ">
         <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono font-semibold text-sm ">

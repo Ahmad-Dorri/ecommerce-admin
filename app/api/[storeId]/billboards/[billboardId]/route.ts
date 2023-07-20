@@ -33,7 +33,7 @@ export async function PATCH(
             {
                 where: {
                     id: params.storeId,
-                    userId
+                    // userId
                 }
             }
         )
@@ -114,12 +114,7 @@ export async function GET(
     { params }: { params: { billboardId: string } }
 ) {
     try {
-        const session = await getServerSession();
-        const userId = session?.user?.name;
 
-        if (!userId) {
-            return new NextResponse('user not found', { status: 401 })
-        }
 
         const billboard = await prismadb.billboard.findUnique({
             where: {

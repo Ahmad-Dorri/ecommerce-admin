@@ -25,8 +25,8 @@ import AlertModal from '@/components/modals/alert-modal';
 import ImageUpload from '@/components/ui/image-upload';
 
 const formSchema = z.object({
-  label: z.string().min(1),
-  imageUrl: z.string().min(1),
+  label: z.string().min(1, { message: 'حداقل یک کلمه وارد کنید.' }),
+  imageUrl: z.string().min(1, { message: 'لطفا یک تصویر بارگذاری کنید.' }),
 });
 
 type billboardFormValues = z.infer<typeof formSchema>;
@@ -86,7 +86,7 @@ export default function BillboardForm({ initialData }: BillboardFormProps) {
       );
       toast.success('بیلبورد با موفقیت حذف شد.');
       router.refresh();
-      router.push('/');
+      router.push(`${origin}/${params.storeId}/billboards`);
     } catch (error) {
       console.log(error);
       // todo: make sure you remove  catogories using this billboard first
