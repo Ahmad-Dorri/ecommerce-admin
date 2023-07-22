@@ -34,6 +34,21 @@ export default function MainNav({
       label: 'بیلبورد',
       active: pathName === `/${params.storeId}/billboards`,
     },
+    {
+      href: `/${params.storeId}/categories`,
+      label: 'دسته‌بندی ها',
+      active: pathName === `/${params.storeId}/categories`,
+    },
+    {
+      href: `/${params.storeId}/sizes`,
+      label: 'سایزها',
+      active: pathName === `/${params.storeId}/sizes`,
+    },
+    {
+      href: `/${params.storeId}/colors`,
+      label: 'رنگ ها',
+      active: pathName === `/${params.storeId}/colors`,
+    },
   ];
   return (
     <nav className={cn('flex items-center gap-2 lg:gap-6 ', className)}>
