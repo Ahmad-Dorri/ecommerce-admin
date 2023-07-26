@@ -1,26 +1,40 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
-import CellAction from './cell-action';
 
-export type BillboardColumn = {
+export type OrderColumn = {
   id: string;
-  label: string;
-  imageUrl: string;
+  phone: string;
+  address: string;
+  products: string;
+  totalPrice: string;
   createdAt: string;
+  isPaid: boolean;
 };
 
-export const columns: ColumnDef<BillboardColumn>[] = [
+export const columns: ColumnDef<OrderColumn>[] = [
   {
-    id: 'actions',
-    cell: ({ row }) => <CellAction billboard={row.original} />,
+    accessorKey: 'products',
+    header: 'سفارشات',
   },
   {
-    accessorKey: 'label',
-    header: 'اسم فروشگاه',
+    accessorKey: 'phone',
+    header: 'شماره تماس',
+  },
+  {
+    accessorKey: 'address',
+    header: 'آدرس',
   },
   {
     accessorKey: 'createdAt',
     header: 'تاریخ',
+  },
+  {
+    accessorKey: 'isPaid',
+    header: 'پرداخت شده',
+  },
+  {
+    accessorKey: 'totalPrice',
+    header: 'مجموع پرداختی',
   },
 ];
