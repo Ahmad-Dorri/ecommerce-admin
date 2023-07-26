@@ -4,7 +4,7 @@ import { Trash } from 'lucide-react';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Color } from '@prisma/client';
+import { Billboard } from '@prisma/client';
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
@@ -22,53 +22,53 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import AlertModal from '@/components/modals/alert-modal';
+import ImageUpload from '@/components/ui/image-upload';
 
 const formSchema = z.object({
-  name: z.string().min(1, { message: 'حداقل یک کلمه وارد کنید.' }),
-  value: z
-    .string()
-    .min(4)
-    .regex(/^#/, { message: 'یک رشته کد هگز وارد کنید.' }),
+  label: z.string().min(1, { message: 'حداقل یک کلمه وارد کنید.' }),
+  imageUrl: z.string().min(1, { message: 'لطفا یک تصویر بارگذاری کنید.' }),
 });
 
-type colorFormValues = z.infer<typeof formSchema>;
+type billboardFormValues = z.infer<typeof formSchema>;
 
-interface ColorFormProps {
-  initialData: Color | null;
+interface BillboardFormProps {
+  initialData: Billboard | null;
 }
 
-export default function ColorForm({ initialData }: ColorFormProps) {
+export default function BillboardForm({ initialData }: BillboardFormProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const params = useParams();
   const router = useRouter();
 
-  const title = initialData ? 'تغییر رنگ' : 'ایجاد رنگ';
-  const description = initialData ? '  تغییر رنگ شما:' : 'اضافه کردن رنگ جدید';
-  const toastMessage = initialData ? 'رنگ بروز شد.' : 'رنگ ایجاد شد.';
-  const action = initialData ? 'ذخیره تغییرات' : 'ایجاد رنگ';
+  const title = initialData ? 'تغییر بیلبورد' : 'ایجاد بیلبورد';
+  const description = initialData
+    ? '  تغییر بیلبورد شما:'
+    : 'اضافه کردن بیلبورد جدید';
+  const toastMessage = initialData ? 'بیلبورد بروز شد.' : 'بیلبورد ایجاد شد.';
+  const action = initialData ? 'ذخیره تغییرات' : 'ایجاد بیلبورد';
 
-  const form = useForm<colorFormValues>({
+  const form = useForm<billboardFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
-      name: '',
-      value: '',
+      label: '',
+      imageUrl: '',
     },
   });
 
-  const onSubmit = async (data: colorFormValues) => {
+  const onSubmit = async (data: billboardFormValues) => {
     try {
       setLoading(true);
       if (!initialData) {
-        await axios.post(`/api/${params.storeId}/colors`, data);
+        await axios.post(`/api/${params.storeId}/billboards`, data);
       } else {
         await axios.patch(
-          `/api/${params.storeId}/colors/${params.colorId}`,
+          `/api/${params.storeId}/billboards/${params.billboardId}`,
           data
         );
       }
       router.refresh();
-      router.push(`/${params.storeId}/colors`);
+      router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
       console.log(error);
@@ -81,14 +81,16 @@ export default function ColorForm({ initialData }: ColorFormProps) {
   const deleteHandler = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
-      toast.success('رنگ با موفقیت حذف شد.');
+      await axios.delete(
+        `/api/${params.storeId}/billboards/${params.billboardId}`
+      );
+      toast.success('بیلبورد با موفقیت حذف شد.');
       router.refresh();
-      router.push(`${origin}/${params.storeId}/colors`);
+      router.push(`${origin}/${params.storeId}/billboards`);
     } catch (error) {
       console.log(error);
       // todo: make sure you remove  catogories using this billboard first
-      toast.error('حذف ناموفق ');
+      toast.error('حذف ناموفق فروشگاه');
     } finally {
       setLoading(false);
       setOpen(false);
@@ -111,13 +113,13 @@ export default function ColorForm({ initialData }: ColorFormProps) {
           <Button
             className="flex items-center gap-2 "
             variant="destructive"
-            color="sm"
+            size="sm"
             disabled={loading}
             onClick={() => {
               setOpen(true);
             }}>
             <Trash className="w-4 h-4" />
-            <p>حذف رنگ</p>
+            <p>حذف بیلبورد</p>
           </Button>
         )}
       </div>
@@ -126,42 +128,37 @@ export default function ColorForm({ initialData }: ColorFormProps) {
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full">
+          <FormField
+            control={form.control}
+            name="imageUrl"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>پس زمینه</FormLabel>
+                <FormControl>
+                  <ImageUpload
+                    disabled={loading}
+                    value={field.value ? [field.value] : []}
+                    onChange={(url) => field.onChange(url)}
+                    onRemove={() => field.onChange('')}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <div className="grid grid-cols-3 gap-8 ">
             <FormField
               control={form.control}
-              name="name"
+              name="label"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>اسم رنگ</FormLabel>
+                  <FormLabel>اسم بیلبورد</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="اسم رنگ"
+                      placeholder="اسم بیلبورد"
                       {...field}
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="value"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>مقدار رنگ</FormLabel>
-                  <FormControl>
-                    <div className="flex  gap-4  items-center">
-                      <Input
-                        disabled={loading}
-                        placeholder="مقدار رنگ"
-                        {...field}
-                      />
-                      <div
-                        className="p-4 rounded-full border "
-                        style={{ backgroundColor: field.value }}
-                      />
-                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

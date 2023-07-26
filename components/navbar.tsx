@@ -21,8 +21,10 @@ export default async function Navbar() {
   return (
     <div className="border-b">
       <div className="flex items-center h-16 px-4">
-        <StoreSwitcher items={stores} />
-        <MainNav className="mx-6" />
+        <div className="flex flex-row-reverse items-center gap-4 lg:flex-row lg:gap-0">
+          <StoreSwitcher items={stores} />
+          <MainNav className="mx-6" />
+        </div>
         <div className="ml-auto flex items-center space-x-4">کاربر</div>
       </div>
     </div>
