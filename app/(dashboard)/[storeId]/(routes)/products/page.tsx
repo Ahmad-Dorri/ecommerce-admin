@@ -5,6 +5,7 @@ import prismadb from '@/lib/prismadb';
 import { formatter } from '@/lib/utils';
 import ProductClient from './components/product-client';
 import { ProductColumn } from './components/columns';
+import Loading from './loading';
 
 export default async function ProductsPage({
   params,
