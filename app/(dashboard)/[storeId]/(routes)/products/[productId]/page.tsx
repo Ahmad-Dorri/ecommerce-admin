@@ -17,6 +17,7 @@ export default async function ProductPage({ params }: params) {
       images: true,
     },
   });
+  console.log(product);
   const sizes = await prismadb.size.findMany({
     where: {
       storeId: params.storeId,

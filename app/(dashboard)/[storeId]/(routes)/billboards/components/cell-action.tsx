@@ -73,7 +73,6 @@ export default function CellAction({ billboard }: CellActionProps) {
                 'billboards' +
                 '/' +
                 billboard.id;
-              console.log(url);
               router.push(url);
             }}>
             <Edit className="h-4 w-4 ml-2" />

@@ -6,15 +6,16 @@ interface DashboardProps {
   params: { storeId: string };
 }
 
-const DashboardPage: React.FC<DashboardProps> = async ({ params }) => {
+export default async function DashboardPage({ params }: DashboardProps) {
   const store = await prismadb.store.findFirst({
     where: { id: params.storeId },
   });
   return (
     <div>
-      <h1>داشبورد</h1>
-      <p>فروشگاه: {store?.name}</p>
+      <h1 className="text-3xl p-2 font-bold text-gray-900">داشبورد</h1>
+      <p className="text-lg font-semibold p-4 text-gray-700">
+        فروشگاه: {store?.name}
+      </p>
     </div>
   );
-};
-export default DashboardPage;
+}

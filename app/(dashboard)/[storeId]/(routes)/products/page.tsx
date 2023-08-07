@@ -35,7 +35,7 @@ export default async function ProductsPage({
       name: product.name,
       isFeatured: product.isFeatured,
       isArchived: product.isArchived,
-      price: formatter.format(product.price.toNumber()),
+      price: formatter.format(product.price.toNumber()) + ' ریال ',
       category: product.category.name,
       color: product.color,
       size: product.size.name,

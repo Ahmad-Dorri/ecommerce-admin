@@ -5,7 +5,4 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const formatter = new Intl.NumberFormat('fa-IR', {
-  style: 'currency',
-  currency: 'IRR',
-});
+export const formatter = new Intl.NumberFormat('fa-IR');

@@ -16,6 +16,7 @@ export default async function DashboardLayout({
   if (!userId) {
     redirect('/login');
   }
+
   const store = await prismadb.store.findFirst({
     where: {
       id: params.storeId,
@@ -23,8 +24,10 @@ export default async function DashboardLayout({
     },
   });
   if (!store) redirect('/');
+
   return (
     <>
+      {/* @ts-ignore */}
       <Navbar />
       {children}
     </>

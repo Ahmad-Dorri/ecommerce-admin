@@ -34,11 +34,12 @@ export default async function OrdersPage({
       id: order.id,
       phone: order.phone,
       address: order.address,
-      totalPrice: formatter.format(
-        order.orderItems
-          .map((orderItem) => orderItem.product.price.toNumber())
-          .reduce((acc, cur) => acc + cur, 0)
-      ),
+      totalPrice:
+        formatter.format(
+          order.orderItems
+            .map((orderItem) => orderItem.product.price.toNumber())
+            .reduce((acc, cur) => acc + cur, 0)
+        ) + ' ریال ',
       products: order.orderItems.map((order) => order.product.name).join(', '),
       createdAt: perisanDate,
       isPaid: order.isPaid,
