@@ -91,7 +91,7 @@ export default function MainNav({
               key={route.href}
               href={route.href}
               className={cn(
-                'bg-slate-100 p-1 cursor-pointer rounded-sm text-sm font-medium transition-colors hover:text-primary flex items-center justify-between gap-2',
+                'p-1 cursor-pointer rounded-sm text-sm font-medium transition-colors hover:text-primary flex items-center justify-between gap-2',
                 route.active
                   ? 'text-black dark:text-white'
                   : 'text-muted-foreground'
@@ -108,7 +108,7 @@ export default function MainNav({
             key={route.href}
             href={route.href}
             className={cn(
-              'bg-slate-100 p-1 rounded-sm text-sm font-medium transition-colors hover:text-primary flex items-center justify-between gap-2',
+              'p-1 rounded-sm text-sm font-medium transition-colors hover:text-primary flex items-center justify-between gap-2',
               route.active
                 ? 'text-black dark:text-white'
                 : 'text-muted-foreground'

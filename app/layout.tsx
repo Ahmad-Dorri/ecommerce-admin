@@ -4,6 +4,7 @@ import './globals.css';
 
 import ModalProvider from '@/providers/modal-provider';
 import { ToastProvider } from '@/components/modals/toast-provider';
+import { ThemeProvider } from '@/providers/theme-provider';
 
 const shabnam = localFont({
   src: '../public/font/Shabnam.woff2',
@@ -21,9 +22,11 @@ export default function RootLayout({
   return (
     <html dir="rtl">
       <body className={shabnam.className}>
-        <ToastProvider />
-        <ModalProvider />
-        {children}
+        <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+          <ToastProvider />
+          <ModalProvider />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
