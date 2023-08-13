@@ -1,15 +1,16 @@
-# Full Stack E-Commerce + Dashboard & CMS: Next.js 13 App Router, React, Tailwind, Prisma, MySQL, 2023
+# Full Stack PERSIAN E-Commerce + Dashboard & CMS: Next.js 13 App Router, React, Tailwind, Prisma, MySQL, 2023
 
 For DEMO, use [Stripe Testing Cards](https://stripe.com/docs/testing)
 
-This is a repository for a Full Stack E-Commerce + Dashboard & CMS: Next.js 13 App Router, React, Tailwind, Prisma, MySQL
+This is a repository for a Full Stack <strong>PERSIAN</strong> E-Commerce + Dashboard & CMS: Next.js 13 App Router, React, Tailwind, Prisma, MySQL
 
 Key Features:
 
-- We will be using Shadcn UI for the Admin!
+- We will be using <a href='https://www.bing.com/ck/a?!&&p=42a34e6cf0fc1fa0JmltdHM9MTY5MTc5ODQwMCZpZ3VpZD0zZGQzMjg3ZC03Mjk1LTZhMWQtMWYzZC0zYWQ0NzM0NzZiZmYmaW5zaWQ9NTE0MQ&ptn=3&hsh=3&fclid=3dd3287d-7295-6a1d-1f3d-3ad473476bff&psq=shadcn&u=a1aHR0cHM6Ly91aS5zaGFkY24uY29tLw&ntb=1' >shadcn-ui</a> for the Admin!
+  <img/>
 - Our admin dashboard is going to serve as both CMS, Admin and API!
+
 - You will be able to control mulitple vendors / stores through this single CMS! (For example you can have a "Shoe store" and a "Laptop store" and a "Suit store", and our CMS will generate API routes for all of those individually!)
-  ![the pictore of the ability to change the store](public/images/README/select-store.png)```
 - You will be able to create, update and delete categories!
 - You will be able to create, update and delete products!
 - You will be able to upload multiple images for products, and change them whenever you want!
@@ -32,7 +33,7 @@ Key Features:
 ### Cloning the repository
 
 ```shell
-git clone https://github.com/AntonioErdeljac/next13-ecommerce-admin.git
+git clone https://github.com/Ahmad-Dorri/ecommerce-admin.git
 ```
 
 ### Install packages
@@ -44,12 +45,11 @@ npm i
 ### Setup .env file
 
 ```js
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+NEXTAUTH_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
+
+
 
 # This was inserted by `prisma init`:
 # Environment variables declared in this file are automatically made available to Prisma.
@@ -85,3 +85,35 @@ Running commands with npm `npm run [command]`
 | command | description                              |
 | :------ | :--------------------------------------- |
 | `dev`   | Starts a development instance of the app |
+
+## Technologies Used
+
+The project utilizes the following technologies:
+
+- Next.js 13 App Router
+- React
+- Shadcn UI + Tailwind CSS
+- Prisma
+- MySQL
+- NEXT AUTH Authentication
+- Stripe
+- Typescript
+- ZOD
+- AXIOS
+- ZUSTAND
+
+For a complete list of dependencies, you can refer to the `package.json` file.
+
+## Contributing
+
+Contributions to the project are welcome! If you want to contribute, please follow the guidelines outlined in the [CONTRIBUTING.md](#insert_link_to_contributing_file) file.
+
+## License
+
+The project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute the codebase as per the terms of the license.
+
+## Documentation
+
+For detailed documentation and usage guidelines, please refer to the [project wiki](#insert_link_to_wiki).
+
+---
