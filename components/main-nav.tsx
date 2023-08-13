@@ -82,7 +82,7 @@ export default function MainNav({
       {menuOpen && (
         <nav
           className={cn(
-            'flex flex-col gap-1 max-w-[200px] h-full  transition-all absolute right-0 top-20',
+            'flex flex-col gap-1 max-w-[200px] h-auto p-8 bg-slate-800 text-white  transition-all absolute right-0 top-20 z-50',
             className
           )}>
           {routes.map((route) => (
@@ -91,9 +91,9 @@ export default function MainNav({
               key={route.href}
               href={route.href}
               className={cn(
-                'p-1 cursor-pointer rounded-sm text-sm font-medium transition-colors hover:text-primary flex items-center justify-between gap-2',
+                'p-1 cursor-pointer rounded-sm text-sm font-medium transition-colors hover:text-slate-400 flex items-center justify-between gap-2',
                 route.active
-                  ? 'text-black dark:text-white'
+                  ? 'text-white dark:text-white'
                   : 'text-muted-foreground'
               )}>
               {route.label}
