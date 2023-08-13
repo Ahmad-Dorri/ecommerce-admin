@@ -1,5 +1,3 @@
-Certainly! Here's an example of a CONTRIBUTING.md file you can use as a starting point:
-
 # Contributing Guidelines
 
 Thank you for considering contributing to this project! We value the contributions of our community and appreciate your effort in making this project better. To ensure a smooth collaboration, please review and follow these guidelines when contributing.
@@ -79,5 +77,3 @@ We appreciate your contributions and look forward to collaborating with you!
 **Note**: By contributing to this project, you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md). Please ensure your interactions align with the guidelines specified therein.
 
 ---
-
-Feel free to customize the CONTRIBUTING.md file according to your project's specific contribution guidelines and requirements.
